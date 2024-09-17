@@ -22,18 +22,7 @@ export const verifyToken = async (req, res, next) => {
 };
 
 export const verifyAdmin = async (req, res, next) => {
-    // --------------- COMPLETAR ---------------
-    /*
-
-        Recordar que para cumplir con toda la funcionalidad deben:
-
-            1. Verificar que el id de usuario en la request es un administrador (utilizando el servicio de usuarios)
-            2. Si no lo es, devolver un error 403 (Forbidden)
-    
-    */
     try {
-        // const admin = await jwt.verify(token, process.env.SECRETADMIN);
-        // if (!req.id) return res.status(403).send("El usuario no es un admin");
         const usuario = UsuariosService.getUsuarioById
         if (!usuario.admin) {
             return res.status(403).send("Solo los administradores pueden acceder");
@@ -44,5 +33,4 @@ export const verifyAdmin = async (req, res, next) => {
     catch {
         res.status(401).send("Hubo un problema");
     }
-
 };
