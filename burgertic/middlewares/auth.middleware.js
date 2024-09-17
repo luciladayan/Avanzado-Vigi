@@ -1,21 +1,24 @@
 import jwt from "jsonwebtoken";
 import UsuariosService from "../services/usuarios.service.js";
+import "dotenv/config"
 
 export const verifyToken = async (req, res, next) => {
-    // --------------- COMPLETAR ---------------
-    /*
 
-        Recordar que para cumplir con toda la funcionalidad deben:
+    try {
+        if (!req.headers.authorization) return res.status(400).send("No hay headers de autorizacion");
+        const { token } = req.headers.authorization.split(" ")[1]
+        if (!token) return res.status(400).send("Esta en el formato incorrecto");
+        const val = await jwt.verify(token, process.env.SECRET);
+        if (!val) return res.status(403).send("El token no es valido");
+        if (!val.id) return res.status(403).send("El usuario no tiene una cuenta");
 
-            1. Verificar si hay un token en los headers de autorización
-            2. Verificar que el token esté en el formato correcto (Bearer <token>)
-            3. Verificar que el token sea válido (utilizando la librería jsonwebtoken)
-            4. Verificar que tenga un id de usuario al decodificarlo
-    
-        Recordar también que si sucede cualquier error en este proceso, deben devolver un error 401 (Unauthorized)
-    */
-   if (!req.headers.authorization) return res.status(400).send("No hay headers de autorizacion");
-   const {token} = req.headers.authorization 
+        req.id = val.id;
+        next();
+    }
+    catch (error) {
+        res.status(401).send("Hubo un problema");
+    }
+
 };
 
 export const verifyAdmin = async (req, res, next) => {
@@ -28,4 +31,18 @@ export const verifyAdmin = async (req, res, next) => {
             2. Si no lo es, devolver un error 403 (Forbidden)
     
     */
+    try {
+        // const admin = await jwt.verify(token, process.env.SECRETADMIN);
+        // if (!req.id) return res.status(403).send("El usuario no es un admin");
+        const usuario = UsuariosService.getUsuarioById
+        if (!usuario.admin) {
+            return res.status(403).send("Solo los administradores pueden acceder");
+        }
+
+        next();
+    }
+    catch {
+        res.status(401).send("Hubo un problema");
+    }
+
 };
