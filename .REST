@@ -1,0 +1,13 @@
+POST http://localhost:9000/auth/register HTTP/1.1
+Content-Type: "application/json"
+
+{
+    "usuario": {
+        "nombre": "Luli", 
+        "apellido":"Dayan", 
+        "email": "luli@gmail.com",
+        "password": "1111"
+    }
+}
+
+### 
