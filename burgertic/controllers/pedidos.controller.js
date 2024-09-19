@@ -3,7 +3,7 @@ import PedidosService from "../services/pedidos.service.js";
 const getPedidos = async (req, res) => {
 
     try {
-        const pedidos = await PedidosServiceService.getPedidos();
+        const pedidos = await PedidosService.getPedidos();
         res.json(pedidos);
     } catch (error) {
         res.status(500).json({ message: error.message });
