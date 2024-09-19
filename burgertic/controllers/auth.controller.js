@@ -66,7 +66,6 @@ const login = async (req, res) => {
             
         /*5*/
         const token =  jwt.sign({id: usuario.id}, SECRET, {expiresIn: "30m"});
-
         res.send(token)
         }   
 
@@ -74,8 +73,4 @@ const login = async (req, res) => {
             res.status(500).json({ message: error.message });
         }
     }
-
-
-
-
 export default { register, login };
