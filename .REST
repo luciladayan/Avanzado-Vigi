@@ -1,3 +1,7 @@
+
+# Definir variable para el token
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+
 POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
 
@@ -17,61 +21,43 @@ Content-Type: application/json
         "password": "1111"
 }
 
-### 
-
-GET http://localhost:9000/pedidos/ HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwNzU3LCJleHAiOjE3MjY4NDI1NTd9.XaVjyxBDPg6gQI_8jVlPAoSMY8rMrTUMMVALmp_eUTk
-### 
-
-GET http://localhost:9000/pedidos/:usuario HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwNzU3LCJleHAiOjE3MjY4NDI1NTd9.XaVjyxBDPg6gQI_8jVlPAoSMY8rMrTUMMVALmp_eUTk
-###
-
-GET http://localhost:9000/pedidos/:id HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
-### 
-
+### Aceptar un pedido
 PUT http://localhost:9000/pedidos/:id/aceptar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-     "id": "luli@gmail.com"
+     "estado": "aceptado"
 }
-
 
 ###
 
+### Comenzar un pedido
 PUT http://localhost:9000/pedidos/:id/comenzar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
+     "estado": "en camino"
 }
-
 
 ###
 
+### Entregar un pedido
 PUT http://localhost:9000/pedidos/:id/entregar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
+     "estado": "entregado"
 }
 
-
 ###
+
+### Eliminar un pedido
 DELETE http://localhost:9000/pedidos/:id HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
 }
-
-
-###
-
-

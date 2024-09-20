@@ -14,8 +14,7 @@ const register = async (req, res) => {
         /*3*/
         const usuarioExists = await UsuariosService.getUsuarioByEmail(usuario.email);
         if (usuarioExists)
-            return res.status(404).json({ message: "Usuario ya existente" });
-
+            return res.status(409).json({ message: "Usuario ya existente" });        
         /*5*/
         usuario.password = await bcrypt.hash(usuario.password, 10)
 
@@ -63,7 +62,11 @@ const login = async (req, res) => {
         /*5*/
 
         const token = jwt.sign({ id: usuario.id }, process.env.SECRET, { expiresIn: "30m" });
-        res.send(token)
+        res.status(200).json({ 
+            token, 
+            usuario: { id: usuario.id, email: usuario.email, nombre: usuario.nombre } 
+        });
+        
     }
     catch (error) {
         res.status(500).json({ message: error.message });
