@@ -1,6 +1,6 @@
 
 # Definir variable para el token
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODYwMjg0LCJleHAiOjE3MjY4NjIwODR9.ycig1mT5RqFPVGO6vjlqrm-J8wSbvUTWpkRcw7oTL2w"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODYyMzAwLCJleHAiOjE3MjY4NjQxMDB9.-AEks5BzPJhEcjCkKEM47jY8badYh36qwxGd9Q_Cn0I"
 
 POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
@@ -55,8 +55,8 @@ Content-Type: application/json
 
 ### Comenzar un pedido
 PUT http://localhost:9000/pedidos/:id/comenzar HTTP/1.1
-Authorization: Bearer {{token}}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
      "estado": "en camino"
