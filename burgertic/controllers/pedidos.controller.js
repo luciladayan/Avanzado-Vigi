@@ -44,23 +44,24 @@ const getPedidoById = async (req, res) => {
 
 const createPedido = async (req, res) => {
     /*1*/
-    const pedidos = req.body;
+    const platos = req.body;
     /*2*/
-    if (!Array.isArray(req.body.pedidos)) {
+    if (!Array.isArray(platos)) {
         return res.status(400).json({ error: "El campo pedidos debe ser un array" });
     }
     /*3*/
-    if (req.body.pedidos.length === 0) {
+    if (platos.length === 0) {
         return res.status(400).json({ error: "El array de pedidos debe tener al menos un plato" });
     }
     /*4*/
-    if (!pedidos.id || !pedidos.cantidad)
-        return res.status(400).json({ message: "Faltan campos por llenar" });
-
-    res.status(400).json({ message: error.message });
-
+    for (let i = 0; i < platos.length; i++) {
+        if (!platos[i].id || !platos[i].cantidad) {
+            return res.status(400).json({ error: "Todos los platos deben tener un id y una cantidad" });
+        }
+    }
     try {
-        await PedidosService.createPedido(pedidos);
+        const id_usuario = req.id;
+        await PedidosService.createPedido(id_usuario, platos);
         res.status(201).json({ message: "Pedido creado con exito" });
 
     } catch (error) {

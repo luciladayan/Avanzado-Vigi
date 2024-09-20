@@ -20,9 +20,31 @@ Content-Type: application/json
 ### 
 
 GET http://localhost:9000/pedidos/ HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODM5NzE4LCJleHAiOjE3MjY4NDE1MTh9.lWrycevuHEmRLWBd9PE3iDPxTA0AaU8wFZUKaS6mHN4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwNzU3LCJleHAiOjE3MjY4NDI1NTd9.XaVjyxBDPg6gQI_8jVlPAoSMY8rMrTUMMVALmp_eUTk
 ### 
 
 GET http://localhost:9000/pedidos/:usuario HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODM5NzE4LCJleHAiOjE3MjY4NDE1MTh9.lWrycevuHEmRLWBd9PE3iDPxTA0AaU8wFZUKaS6mHN4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwNzU3LCJleHAiOjE3MjY4NDI1NTd9.XaVjyxBDPg6gQI_8jVlPAoSMY8rMrTUMMVALmp_eUTk
+###
+
+GET http://localhost:9000/pedidos/:id HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwODI1LCJleHAiOjE3MjY4NDI2MjV9.caOOvloKuDDpKVTMSAyROK9mHDN2A0hwkTXdSkmkpoc
 ### 
+
+### 
+POST http://localhost:9000/pedidos HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQyNjc5LCJleHAiOjE3MjY4NDQ0Nzl9.hipuVA0rw74BC01VowRimouBIPeVwrokK4m3zBjjj2Q
+Content-Type: application/json
+
+{
+    "pedidos": [
+        {
+            "id": 1,
+            "cantidad": 2
+        },
+        {
+            "id": 2,
+            "cantidad": 1
+        }
+    ]
+}
