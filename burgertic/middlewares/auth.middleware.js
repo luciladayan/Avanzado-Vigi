@@ -6,7 +6,7 @@ export const verifyToken = async (req, res, next) => {
 
     try {
         if (!req.headers.authorization) return res.status(400).send("No hay headers de autorizacion");
-        const { token } = req.headers.authorization.split(" ")[1]
+        const token = req.headers.authorization.split(" ")[1]
         if (!token) return res.status(400).send("Esta en el formato incorrecto");
         const val = await jwt.verify(token, process.env.SECRET);
         if (!val) return res.status(403).send("El token no es valido");

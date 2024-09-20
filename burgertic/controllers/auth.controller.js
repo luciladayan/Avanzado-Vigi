@@ -6,11 +6,11 @@ import usuariosService from "../services/usuarios.service.js";
 const register = async (req, res) => {
     try {
         /*1*/
+        const {nombre, apellido, email, password} = req.body;
         /*2*/
-        if (!req.body.nombre || !req.body.apellido || !req.body.email || !req.body.password)
+        if (!nombre || !apellido || !email || !password)
             return res.status(400).json({ message: "Faltan campos por llenar" });
         const usuario = {nombre: req.body.nombre, apellido: req.body.apellido, email: req.body.email, password: req.body.password}
-        JSON.stringify(usuario)
         /*3*/
         const usuarioExists = await UsuariosService.getUsuarioByEmail(usuario.email);
         if (usuarioExists)
@@ -20,9 +20,7 @@ const register = async (req, res) => {
         usuario.password = await bcrypt.hash(usuario.password, 10)
 
         /*6  */
-        const usuarioInsert = await UsuariosService.createUsuario(usuario.usuario)
-        if (!usuarioInsert) return res.status(500).json({ message: error.message });
-        
+        await UsuariosService.createUsuario(usuario)
         res.status(200).json({ message: "exito" });
 
     } catch (error) {
@@ -59,11 +57,12 @@ const login = async (req, res) => {
         if (!usuario) return res.status(400).json({ message: "Usuario no encontrado" });
 
         /*4*/
-        const contraseñaCorrecta = bcrypt.compare(password, usuario.password);
-        if (!contraseñaCorrecta) return res.status(400).json({ message: "La contraseña no es correcta" })
+        const contraseniaCorrecta = await bcrypt.compare(password, usuario.password);
+        if (!contraseniaCorrecta) return res.status(400).json({ message: "La contraseña no es correcta" })
 
         /*5*/
-        const token = jwt.sign({ id: usuario.id }, SECRET, { expiresIn: "30m" });
+
+        const token = jwt.sign({ id: usuario.id }, process.env.SECRET, { expiresIn: "30m" });
         res.send(token)
     }
     catch (error) {
