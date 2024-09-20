@@ -1,6 +1,6 @@
 
 # Definir variable para el token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODYwMjg0LCJleHAiOjE3MjY4NjIwODR9.ycig1mT5RqFPVGO6vjlqrm-J8wSbvUTWpkRcw7oTL2w"
 
 POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
@@ -20,6 +20,27 @@ Content-Type: application/json
         "email": "luli@gmail.com",
         "password": "1111"
 }
+### 
+
+POST http://localhost:9000/pedidos HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "platos": [
+        {
+            "id": 1, 
+            "cantidad": 2
+        },
+        {
+            "id": 2,
+            "cantidad": 1
+        }
+    ]
+}
+
+###
 
 ### Aceptar un pedido
 PUT http://localhost:9000/pedidos/:id/aceptar HTTP/1.1

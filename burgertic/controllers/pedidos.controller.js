@@ -64,25 +64,27 @@ const createPedido = async (req, res) => {
 } 
 
 const aceptarPedido = async (req, res) => {
-        /*1*/ 
-            const pedido = await PedidosService.getPedidoById(id);
-        /*2*/
-            if (!pedido)
-                return res.status(404).json({ message: "Pedido no encontrado" });
-        /*3 y 4*/
-            if(pedido.estado !== "pendiente")
-                return res.status(400).json({ message: "Pedido no pendiente" });
-
-            /*5*/
-            await updatePedido(id, "aceptado");
 
     try {
-        await PedidosService.updatePedido(id, "aceptado");
-        res.status(201).json({ message: "Pedido aceptado" });
+  /*1*/ 
+  const pedido = await PedidosService.getPedidoById(id);
+  /*2*/
+      if (!pedido)
+          return res.status(404).json({ message: "Pedido no encontrado" });
+  /*3 y 4*/
+      if(pedido.estado !== "pendiente")
+          return res.status(400).json({ message: "Pedido no pendiente" });
 
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+      /*5*/
+      await updatePedido(id, "aceptado");
+
+  await PedidosService.createPedido(pedidos);
+  res.status(201).json({ message: "Pedido aceptado" });
+
+}
+ catch (error) {
+res.status(500).json({ message: error.message });
+}
 };
 
 const comenzarPedido = async (req, res) => {
