@@ -43,31 +43,43 @@ const getPedidoById = async (req, res) => {
 
 
 const createPedido = async (req, res) => {
-    /*1*/
-    const platos = req.body;
-    /*2*/
-    if (!Array.isArray(platos)) {
-        return res.status(400).json({ error: "El campo pedidos debe ser un array" });
-    }
-    /*3*/
-    if (platos.length === 0) {
-        return res.status(400).json({ error: "El array de pedidos debe tener al menos un plato" });
-    }
-    /*4*/
-    for (let i = 0; i < platos.length; i++) {
-        if (!platos[i].id || !platos[i].cantidad) {
-            return res.status(400).json({ error: "Todos los platos deben tener un id y una cantidad" });
-        }
-    }
-    try {
-        const id_usuario = req.id;
-        await PedidosService.createPedido(id_usuario, platos);
-        res.status(201).json({ message: "Pedido creado con exito" });
+     /*
+        Recordar que para cumplir con toda la funcionalidad deben:
 
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+            1. Verificar que el body de la request tenga el campo platos
+            2. Verificar que el campo productos sea un array
+            3. Verificar que el array de productos tenga al menos un producto
+            4. Verificar que todos los productos tengan un id y una cantidad
+            5. Si algo de lo anterior no se cumple, devolver un mensaje de error (status 400)
+            6. Crear un pedido con los productos recibidos y el id del usuario (utilizando el servicio de pedidos)
+            7. Devolver un mensaje de éxito (status 201)
+            8. Devolver un mensaje de error si algo falló (status 500)
+        
+    */
+    try {
+        if (!req.body.platos) return res.status(400).send("No se encontro el campo platos"); 
+        const {platos} = req.body
+        if (!Array.isArray(platos)) return res.status(400).send("Platos no  es un array");
+        if (!platos[0]) return res.status(400).send(" Debe haber al menos 1 producto"); 
+        for (const plato of platos) {
+            if (!plato.id || !plato.cantidad) return res.status(400).send("Faltan campos o son invalidos");
+        } 
+        // Crear el pedido
+        
+        const {idUsuario} = req.body
+        const crearPedido = await PedidosService.createPedido(idUsuario, platos)
+        if (!crearPedido) return res.status(400).send("No se ha podido crear el pedido")
+        res.status(201).send("Exito al crear el pedido")
     }
-};
+    catch (error) {
+        res.status(400).send("Error")
+    }
+
+
+        
+
+
+} 
 
 
 

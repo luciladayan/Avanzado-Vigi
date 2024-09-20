@@ -33,18 +33,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ### 
 POST http://localhost:9000/pedidos HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQyNjc5LCJleHAiOjE3MjY4NDQ0Nzl9.hipuVA0rw74BC01VowRimouBIPeVwrokK4m3zBjjj2Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQ1Mjg3LCJleHAiOjE3MjY4NDcwODd9.eczIpWkUl8yAgXFB3II9thBde4q0AhyXCYd7v_xDzBU
 Content-Type: application/json
 
 {
-    "pedidos": [
+    "idUsuario": 1,
+    "platos": [
         {
-            "id": 1,
+            "id": 1, 
             "cantidad": 2
         },
         {
-            "id": 2,
-            "cantidad": 1
+            "id": 3, 
+            "cantidad": 3
         }
     ]
 }
