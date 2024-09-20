@@ -28,24 +28,50 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 ###
 
 GET http://localhost:9000/pedidos/:id HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQwODI1LCJleHAiOjE3MjY4NDI2MjV9.caOOvloKuDDpKVTMSAyROK9mHDN2A0hwkTXdSkmkpoc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
 ### 
 
-### 
-POST http://localhost:9000/pedidos HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQ1Mjg3LCJleHAiOjE3MjY4NDcwODd9.eczIpWkUl8yAgXFB3II9thBde4q0AhyXCYd7v_xDzBU
+PUT http://localhost:9000/pedidos/:id/aceptar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
 Content-Type: application/json
 
 {
-    "idUsuario": 1,
-    "platos": [
-        {
-            "id": 1, 
-            "cantidad": 2
-        },
-        {
-            "id": 3, 
-            "cantidad": 3
-        }
-    ]
+     "id": "luli@gmail.com"
 }
+
+
+###
+
+PUT http://localhost:9000/pedidos/:id/comenzar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Content-Type: application/json
+
+{
+
+}
+
+
+###
+
+PUT http://localhost:9000/pedidos/:id/entregar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Content-Type: application/json
+
+{
+
+}
+
+
+###
+DELETE http://localhost:9000/pedidos/:id HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODUxODYwLCJleHAiOjE3MjY4NTM2NjB9.71qCDIpumSQXCODoSSIuUAoTrIKFB4UfZcIZIfu-kPw
+Content-Type: application/json
+
+{
+
+}
+
+
+###
+
+

@@ -74,14 +74,7 @@ const createPedido = async (req, res) => {
     catch (error) {
         res.status(400).send("Error")
     }
-
-
-        
-
-
 } 
-
-
 
 const aceptarPedido = async (req, res) => {
         /*1*/ 
