@@ -60,14 +60,10 @@ const login = async (req, res) => {
         if (!contraseniaCorrecta) return res.status(400).json({ message: "La contraseña no es correcta" })
 
         /*5*/
-
         const token = jwt.sign({ id: usuario.id }, process.env.SECRET, { expiresIn: "30m" });
-        res.status(200).json({ 
-            token
-        });
-        
-    }
-    catch (error) {
+            res.status(200).json({token});
+        }
+        catch (error) {
         res.status(500).json({ message: error.message });
     }
 }

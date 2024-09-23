@@ -1,7 +1,6 @@
 
 # Definir variable para el token
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODYyMzAwLCJleHAiOjE3MjY4NjQxMDB9.-AEks5BzPJhEcjCkKEM47jY8badYh36qwxGd9Q_Cn0I"
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI3MDk4MzUzLCJleHAiOjE3MjcxMDAxNTN9.vnjXnVr_G9wdFTdb_iSdSn6LXRFSBgkzWgdNo8Gi6RU
 POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
 
@@ -48,7 +47,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-     "estado": "aceptado"
+    "estado": "aceptado"
 }
 
 ###
