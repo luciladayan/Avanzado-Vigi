@@ -58,4 +58,8 @@ const createUsuario = async (usuario) => {
     }
 };
 
-export default { getUsuarioByEmail, getUsuarioById, createUsuario };
+const upgradeUsuario = async (id) => {
+    await client.query("UPDATE usuarios SET admin=true WHERE id=$1", [id])
+    }
+
+export default { getUsuarioByEmail, getUsuarioById, createUsuario, upgradeUsuario };
