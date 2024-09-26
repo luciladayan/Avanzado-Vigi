@@ -65,11 +65,12 @@ const createPedido = async (req, res) => {
 } 
 
 const aceptarPedido = async (req, res) => {
-
+const id = parseInt(req.params.id);
     try {
   /*1*/ 
   const pedido = await PedidosService.getPedidoById(id);
   /*2*/
+  console.log(pedido.estado);
       if (!pedido)
           return res.status(404).json({ message: "Pedido no encontrado" });
   /*3 y 4*/
@@ -77,7 +78,7 @@ const aceptarPedido = async (req, res) => {
           return res.status(400).json({ message: "Pedido no pendiente" });
 
       /*5*/
-      await updatePedido(id, "aceptado");
+      await pedido.PedidosService.updatePedido(id, "aceptado");
 
   await PedidosService.createPedido(pedidos);
   res.status(201).json({ message: "Pedido aceptado" });
