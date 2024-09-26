@@ -1,7 +1,5 @@
-
 # Definir variable para el token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI3MDk4MzUzLCJleHAiOjE3MjcxMDAxNTN9.vnjXnVr_G9wdFTdb_iSdSn6LXRFSBgkzWgdNo8Gi6RU
-POST http://localhost:9000/auth/register HTTP/1.1
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI3MzYxOTQxLCJleHAiOjE3MjczNjM3NDF9.GNrf1ikyezFD-S8k5hrgpStl1hrtxsvHDF8XLcQjb1I
 Content-Type: application/json
 
 {
@@ -26,7 +24,6 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "idUsuario": 1,
     "platos": [
         {
             "id": 1, 
@@ -49,6 +46,14 @@ Content-Type: application/json
 {
     "estado": "aceptado"
 }
+
+
+###
+
+GET http://localhost:9000/pedidos HTTP/1.1
+Authorization: Bearer {{token}}
+
+
 
 ###
 

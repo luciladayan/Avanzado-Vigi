@@ -51,10 +51,11 @@ const createPedido = async (req, res) => {
         for (const plato of platos) {
             if (!plato.id || !plato.cantidad) return res.status(400).send("Faltan campos o son invalidos");
         } 
+
         // Crear el pedido
         
-        const {idUsuario} = req.body
-        const crearPedido = await PedidosService.createPedido(idUsuario, platos)
+        const id = req.id;
+        const crearPedido = await PedidosService.createPedido(id, platos)
         if (!crearPedido) return res.status(400).send("No se ha podido crear el pedido")
         res.status(201).send("Exito al crear el pedido")
     }

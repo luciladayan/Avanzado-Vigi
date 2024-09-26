@@ -1,0 +1,19 @@
+{
+  "name": "avanzado-vigi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jazminniew/Avanzado-Vigi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jazminniew/Avanzado-Vigi/issues"
+  },
+  "homepage": "https://github.com/jazminniew/Avanzado-Vigi#readme",
+  "description": ""
+}

@@ -1,6 +1,6 @@
 import UsuariosService from "../services/usuarios.service.js"
 
-const upgradeUusario = async (req,res)=>{
+const upgradeUsuario = async (req,res)=>{
     const id = parseInt(req.params.id);
     if (!id) return res.status(400).json({
         message: "El id no es numerico"

@@ -4,7 +4,7 @@ import AuthRouter from "./routes/auth.router.js";
 import PedidosRouter from "./routes/pedidos.router.js";
 import cors from "cors";
 import "dotenv/config";
-import UsuariosRouter from "./router/usuarios.router.js" //chequear que la ruta este bien
+import UsuariosRouter from "./routes/usuarios.router.js" //chequear que la ruta este bien
 
 const app = express();
 
