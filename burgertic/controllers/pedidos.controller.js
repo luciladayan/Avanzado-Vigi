@@ -70,7 +70,7 @@ const id = parseInt(req.params.id);
   /*1*/ 
   const pedido = await PedidosService.getPedidoById(id);
   /*2*/
-  console.log(pedido.estado);
+//   console.log(pedido.estado);
       if (!pedido)
           return res.status(404).json({ message: "Pedido no encontrado" });
   /*3 y 4*/
@@ -89,8 +89,8 @@ res.status(500).json({ message: error.message });
 };
 
 const comenzarPedido = async (req, res) => {
-    const id = req.id
-        /*1*/ 
+    const id = parseInt(req.params.id);
+    /*1*/ 
             const pedido = await PedidosService.getPedidoById(id);
         /*2*/
             if (!pedido)
@@ -103,7 +103,7 @@ const comenzarPedido = async (req, res) => {
             await PedidosService.updatePedido(id, "en camino");
 
     try {
-        await PedidosService.createPedido(pedido);
+        await PedidosService.createPedido(pedidos);
         res.status(201).json({ message: "Pedido en camino" });
 
     } catch (error) {
@@ -113,6 +113,8 @@ const comenzarPedido = async (req, res) => {
 
 const entregarPedido = async (req, res) => {
         /*1*/ 
+        const id = parseInt(req.params.id);
+
             const pedido = await PedidosService.getPedidoById(id);
         /*2*/
             if (!pedido)
@@ -121,10 +123,10 @@ const entregarPedido = async (req, res) => {
             if(pedido.estado !== "en camino")
                 return res.status(400).json({ message: "Pedido no en camino" });
             /*5*/
-            await updatePedido(id, "entregado");
+            await PedidosService.updatePedido(id, "entregado");
 
     try {
-        await PedidosService.createPedido(pedidos);
+        await PedidosService.createPedido(pedido);
         res.status(201).json({ message: "Pedido entregado" });
 
     } catch (error) {
@@ -132,8 +134,9 @@ const entregarPedido = async (req, res) => {
     }
 };
 
-const deletePedido = async (req, res) => {
-    const { id } = req.params;
+const deletePedido = async (req, res) => 
+    {
+        const id = parseInt(req.params.id);
 
     if (!id) return res.status(400).json({ message: "Se necesita un ID" });
         

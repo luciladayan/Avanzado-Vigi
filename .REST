@@ -1,5 +1,5 @@
 # Definir variable para el token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI3NDQyMDMxLCJleHAiOjE3Mjc0NDM4MzF9.7tg267S7Ix6876t09_B0xA8pk8C4uFrG-yK2_X6RZ-8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI3NDQzODk1LCJleHAiOjE3Mjc0NDU2OTV9.Fo8DwHIN99sn37Y3QxMBvzevZIk1Ud5I50IeUzAHBLE
 POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
 
@@ -55,19 +55,19 @@ Authorization: Bearer {{token}}
 ###
 
 ### Comenzar un pedido
-PUT http://localhost:9000/pedidos/2/comenzar HTTP/1.1
+PUT http://localhost:9000/pedidos/1/comenzar HTTP/1.1
 Authorization: Bearer {{token}}
 
 
 ###
 
 ### Entregar un pedido
-PUT http://localhost:9000/pedidos/:id/entregar HTTP/1.1
+PUT http://localhost:9000/pedidos/1/entregar HTTP/1.1
 Authorization: Bearer {{token}}
 
 
 ###
 
 ### Eliminar un pedido
-DELETE http://localhost:9000/pedidos/:id HTTP/1.1
+DELETE http://localhost:9000/pedidos/1 HTTP/1.1
 Authorization: Bearer {{token}}
