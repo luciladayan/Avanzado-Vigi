@@ -25,8 +25,11 @@ export const verifyToken = async (req, res, next) => {
 };
 
 export const verifyAdmin = async (req, res, next) => {
+    const id = req.id
+    
     try {
-        const usuario = UsuariosService.getUsuarioById
+        const usuario = await UsuariosService.getUsuarioById(id)
+
         if (!usuario.admin) {
             return res.status(403).send("Solo los administradores pueden acceder");
         }

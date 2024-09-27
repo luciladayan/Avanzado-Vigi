@@ -78,9 +78,8 @@ const id = parseInt(req.params.id);
           return res.status(400).json({ message: "Pedido no pendiente" });
 
       /*5*/
-      await pedido.PedidosService.updatePedido(id, "aceptado");
+      await PedidosService.updatePedido(id, "aceptado");
 
-  await PedidosService.createPedido(pedidos);
   res.status(201).json({ message: "Pedido aceptado" });
 
 }
@@ -90,6 +89,7 @@ res.status(500).json({ message: error.message });
 };
 
 const comenzarPedido = async (req, res) => {
+    const id = req.id
         /*1*/ 
             const pedido = await PedidosService.getPedidoById(id);
         /*2*/
@@ -100,10 +100,10 @@ const comenzarPedido = async (req, res) => {
                 return res.status(400).json({ message: "Pedido no aceptado" });
 
             /*5*/
-            await updatePedido(id, "en camino");
+            await PedidosService.updatePedido(id, "en camino");
 
     try {
-        await PedidosService.createPedido(pedidos);
+        await PedidosService.createPedido(pedido);
         res.status(201).json({ message: "Pedido en camino" });
 
     } catch (error) {
