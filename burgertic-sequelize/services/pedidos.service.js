@@ -1,6 +1,4 @@
-import { config } from "../db.js";
-import pkg from "pg";
-const { Client } = pkg;
+import { Plato } from "../models/platos.model.js";
 
 const getPlatosByPedido = async (idPedido) => {
     const client = new Client(config);

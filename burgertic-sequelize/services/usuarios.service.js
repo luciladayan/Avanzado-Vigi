@@ -1,8 +1,20 @@
 import { config } from "../db.js";
 import pkg from "pg";
 const { Client } = pkg;
+import { Usuario } from "../models/usuarios.model.js"; 
 
-const getUsuarioByEmail = async (email) => {
+const getUsuarioByEmail = async (mail) => {
+    const user = await Usuario.findAll({
+        where: {
+            email: mail
+        }
+    }); 
+    if (user.length < 1) return null; 
+
+    return user[0]; 
+}
+
+/*const getUsuarioByEmail = async (email) => {
     const client = new Client(config);
     await client.connect();
 
@@ -19,7 +31,7 @@ const getUsuarioByEmail = async (email) => {
         await client.end();
         throw error;
     }
-};
+}; */
 
 const getUsuarioById = async (id) => {
     const client = new Client(config);
