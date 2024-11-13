@@ -13,6 +13,24 @@ Usuario.init(
         nombre: {
             type: DataTypes.STRING
         }, 
+        apellido: {
+            type: DataTypes.STRING,
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
+        password: {
+            type: DataTypes.STRING,
+        },
+        admin: {
+            type: DataTypes.BOOLEAN,
+        //FALTA ALGO
+        },
         
-    }
-)
+    },
+{
+    sequelize,
+    modelName: "usuarios", //O Usuario
+    timestamps: false,
+}
+);
