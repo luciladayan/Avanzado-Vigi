@@ -1,6 +1,15 @@
-import { Plato } from "../models/platos.model.js";
+import { Pedido } from "../models/pedidos.model.js";
 
 const getPlatosByPedido = async (idPedido) => {
+    
+    /*await PlatoByPedido.findAll({
+        where:{
+            idPedido: idPedido,
+        },
+    });
+    
+    */
+    
     const client = new Client(config);
     await client.connect();
 

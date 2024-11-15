@@ -1,18 +1,12 @@
-import { config } from "../db.js";
-import pkg from "pg";
-const { Client } = pkg;
 import { Usuario } from "../models/usuarios.model.js"; 
 
-const getUsuarioByEmail = async (mail) => {
-    const user = await Usuario.findAll({
+const getUsuarioByEmail = async (mail) => 
+     await Usuario.findAll({
         where: {
             email: mail
         }
     }); 
-    if (user.length < 1) return null; 
 
-    return user[0]; 
-}
 
 /*const getUsuarioByEmail = async (email) => {
     const client = new Client(config);
@@ -33,10 +27,17 @@ const getUsuarioByEmail = async (mail) => {
     }
 }; */
 
-const getUsuarioById = async (id) => {
-    const client = new Client(config);
-    await client.connect();
+const getUsuarioById = async (ID) =>
+await Usuario.findAll({
+        where: {
+            id: ID,
+        },
+    }); 
 
+
+
+       /* const client = new Client(config);
+    await client.connect();
     try {
         const { rows } = await client.query(
             "SELECT * FROM usuarios WHERE id = $1",
@@ -50,9 +51,19 @@ const getUsuarioById = async (id) => {
         await client.end();
         throw error;
     }
-};
+};*/
 
 const createUsuario = async (usuario) => {
+        Usuario.create({
+            nombre: usuario.nombre,
+            apellido: usuario.apellido,
+            email: usuario.email,
+            password: usuario.password,
+            admin: false,  
+            });
+};
+
+/*
     const client = new Client(config);
     await client.connect();
 
@@ -69,5 +80,6 @@ const createUsuario = async (usuario) => {
         throw error;
     }
 };
+*/
 
 export default { getUsuarioByEmail, getUsuarioById, createUsuario };
