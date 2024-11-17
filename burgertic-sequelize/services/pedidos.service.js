@@ -1,11 +1,16 @@
 import { Pedido } from "../models/pedidos.model.js";
+import pg from pg;
+import {PedidoPlato} from "../models/pedidoplato.model.js";
+import { Plato } from "../models/pedidos.model.js";
+import { Usuario } from "../models/usuario.model.js";
 
 const getPlatosByPedido = async (idPedido) => {
     
     /*
+         
         if (!idPedido) throw new Error("Pedido no encontrado");
         
-        await pedidos_platos.findAll({
+        const pedidosplato = await pedidos_platos.findAll({
         where:{
             idPedido: idPedido,
         },
