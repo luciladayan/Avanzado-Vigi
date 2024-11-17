@@ -2,7 +2,9 @@ import { Pedido } from "../models/pedidos.model.js";
 
 const getPlatosByPedido = async (idPedido) => {
     
-    /*await PlatoByPedido.findAll({
+    /*try{
+        
+        await pedidos_platos.findAll({
         where:{
             idPedido: idPedido,
         },
