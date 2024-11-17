@@ -2,14 +2,15 @@ import { Pedido } from "../models/pedidos.model.js";
 
 const getPlatosByPedido = async (idPedido) => {
     
-    /*try{
+    /*
+        if (!idPedido) throw new Error("Pedido no encontrado");
         
         await pedidos_platos.findAll({
         where:{
             idPedido: idPedido,
         },
     });
-    
+    /* chequear si hay que poner un await/*
     */
     
     const client = new Client(config);
