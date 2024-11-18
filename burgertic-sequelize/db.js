@@ -10,15 +10,13 @@ export const config = {
 };
 
 
-
-
-
+import "dotenv/config";
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(
-    process.env.DB_URL
-    
-);
+// Usar la URL de conexión directamente
+export const sequelize = new Sequelize(process.env.DB_URL, {
+  ssl: true,  // Si necesitas habilitar SSL
+});
 
 try {
     await sequelize.authenticate();
